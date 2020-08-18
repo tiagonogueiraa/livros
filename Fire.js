@@ -28,7 +28,7 @@ class Fire {
         })
     }
 
-    addLivro = async ({ text, localUri, livro, sinopse, autor, acao }) => {
+    addLivro = async ({ text, localUri, livro, sinopse, autor, acao, location, latitude, longitude }) => {
         const remoteUri = await this.uploadPhotoAsyncLivro(localUri, `livros/${this.uid}/${Date.now()}`)
 
         return new Promise((res, rej) => {
@@ -42,7 +42,10 @@ class Fire {
                 livro: livro,
                 sinopse: sinopse,
                 autor: autor,
-                acao: acao
+                acao: acao,
+                location : location,
+                latitude : latitude,
+                longitude : longitude,
             })
             .then(ref => {
                 res(ref)
